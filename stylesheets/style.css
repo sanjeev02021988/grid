@@ -1,0 +1,274 @@
+body {
+    display: flex;
+    justify-content: center;
+    font-family: Arial;
+    font-size: 13px;
+    color: #58595b;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: gray;
+    border-radius: 6px;
+}
+
+::-webkit-resizer,
+::-webkit-scrollbar-button,
+::-webkit-scrollbar-corner {
+    display: none
+}
+
+.grid {
+    position: relative;
+    margin: 10px;
+    height: 500px;
+    width: 440px;
+    border: 1px solid #EBEBEB;
+    overflow: hidden;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+}
+
+.header {
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    flex: 0 0 auto;
+    text-transform: capitalize;
+}
+
+.row {
+    display: flex;
+    flex-flow: row nowrap;
+    flex: 0 0 auto;
+}
+
+.row div {
+    padding: 10px;
+    width: 120px;
+    box-sizing: border-box;
+    flex: 0 0 auto;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.header .row div {
+    border: 1px solid #EBEBEB;
+    border-top: 0px;
+    border-left: 0px;
+}
+
+.content {
+    overflow: scroll;
+    display: flex;
+    flex-flow: column nowrap;
+    flex: 1 1 auto;
+}
+
+.content::-webkit-scrollbar {
+    display: none;
+}
+
+.content:hover::-webkit-scrollbar {
+    display: block;
+}
+
+.footer{
+  border-top: 1px solid #EBEBEB;
+}
+
+.footer, .pages{
+    display: flex;
+    flex: 0 0 auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.pages{
+  max-width:150px;
+  overflow:hidden;
+  position:relative;
+}
+
+.footer .icon{
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #EBEBEB;
+}
+
+.footer .icon:active, .pages div:active{
+    background: lightgray;
+}
+
+.pages div{
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #EBEBEB;
+}
+
+.pages div.selected {
+    color: orangered;
+    border-color: orangered;
+}
+
+.grid .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.grid .overlay .background {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    opacity: 0.7;
+}
+
+.overlay .content {
+    position: absolute;
+    z-index: 2;
+    top: 0px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+.loader {
+    position: relative;
+    left: 40%;
+    top: 40%;
+    border: 3px solid transparent;
+    height: 50px;
+    width: 50px;
+    border-top-color: orangered;
+    border-radius: 50%;
+    animation: spinner 500ms linear 0s infinite forwards;
+}
+
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.settings {
+    margin-top: 10px;
+    color: orangered;
+}
+
+.dialog .overlay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: gray;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+}
+
+.dialog .main-body {
+    position: absolute;
+    top: calc(50% - 200px);
+    left: calc(50% - 235px);
+    z-index: 10;
+    width: 450px;
+    box-shadow: 5px 5px 20px gray;
+    background: white;
+}
+
+.dialog-hdr, .btn {
+    text-transform: uppercase;
+}
+
+.dialog-hdr {
+    margin: 10px;
+    padding-left: 10px;
+    color: #212121;
+}
+
+.dialog-hdr h4 {
+    font-size: 19px;
+    font-weight: 100;
+}
+
+.dialog-ftr {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.dialog-cnt {
+    height: 100px;
+    overflow-y: scroll;
+}
+
+.dilaog-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+select {
+    width: 160px;
+    margin-right: 10px;
+    padding: 6px;
+    border: 1px solid #ccc;
+}
+
+.add, .remove {
+    border: 1px solid #ccc;
+    color: gray;
+    width: 24px;
+    height: 24px;
+    font-size: 24px;
+    line-height: 24px;
+    text-align: center;
+    border-radius: 20px;
+    margin-top: 2px;
+    margin-right: 5px;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 0.5em 0;
+    padding: 0;
+}
+
+.btn {
+    color: gray;
+    padding: 8px;
+    margin: 10px;
+    margin-top: 0px;
+    margin-left: 0px;
+    width: 60px;
+    font-size: 15px;
+    text-align: center;
+}
+
+.btn:active {
+    background: lightgray;
+    color: black;
+}
+
+.btn.primary {
+    color: orangered;
+}

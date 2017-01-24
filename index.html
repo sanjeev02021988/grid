@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="gridApp">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="./stylesheets/style.css">
+    <title>JS Bin</title>
+</head>
+<body ng-controller="gridController as gridCtrl">
+<grid conf="gridCtrl.gridConfig"></grid>
+<div ng-controller="dialogController as dialogCtrl">
+    <i class="material-icons settings" ng-click="dialogCtrl.fnShowFilterDialog()">settings</i>
+
+    <div class="dialog" ng-show="dialogCtrl.showFilterDialog">
+        <div class="overlay"></div>
+        <div class="main-body">
+            <div class="dialog-hdr"><h4>Filter</h4></div>
+            <div class="dialog-cnt">
+                <div class="dilaog-row" ng-repeat="condition in dialogCtrl.filterCondition track by $index">
+                    <select ng-options="key as option.key for (key, option) in dialogCtrl.options"
+                            ng-model="condition.key"></select>
+                    <select ng-options="value.id as value.value for value in dialogCtrl.getSubOptions(condition.key)"
+                            ng-model="condition.value"></select>
+
+                    <div class="add" ng-click="dialogCtrl.addCondition($index)">+</div>
+                    <div class="remove" ng-click="dialogCtrl.removeCondition($index)">-</div>
+                </div>
+            </div>
+            <hr/>
+            <div class="dialog-ftr">
+                <div class="btn secondary" ng-click="dialogCtrl.close()">Cancel</div>
+                <div class="btn primary" ng-click="dialogCtrl.apply()">Apply</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+<script src="./app.js"></script>
+<script src="./javascripts/services/worldBankServices.js"></script>
+<script src="./javascripts/controllers/gridController.js"></script>
+<script src="./javascripts/controllers/dialogController.js"></script>
+<script src="./javascripts/directives/grid.js"></script>
+</body>
+</html>
